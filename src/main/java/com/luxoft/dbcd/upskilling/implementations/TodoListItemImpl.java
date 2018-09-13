@@ -8,6 +8,7 @@ public class TodoListItemImpl implements Togglable {
     private boolean toggled;
 
     public TodoListItemImpl(String title){
+        if (title.isEmpty()) throw new IllegalArgumentException("Title cannot be empty");
         this.title = title;
         toggled = false;
     }
@@ -16,8 +17,11 @@ public class TodoListItemImpl implements Togglable {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public TodoListItemImpl setTitle(String title) {
+        //this.title = title;
+        if (title.isEmpty()) throw new IllegalArgumentException("New title cannot be empty");
+        return new TodoListItemImpl(title);
+
     }
 
     public boolean isToggled(){
@@ -29,5 +33,11 @@ public class TodoListItemImpl implements Togglable {
     @Override
     public void toggle() {
 
+     //   if (toggled) {
+     //       toggled = false;
+     //       return;
+     //   }
+     //   toggled = true;
+       toggled = !toggled;
     }
 }

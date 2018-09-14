@@ -22,7 +22,7 @@ class TodoListItemImplTest {
 
     @Test
     public void todoItemIsNotNullAfterCreation() {
-        Assertions.assertTrue(title.equalsIgnoreCase(todoItem.getTitle()));
+        Assertions.assertTrue(title.equalsIgnoreCase(item.getTitle()));
     }
 
     @Test

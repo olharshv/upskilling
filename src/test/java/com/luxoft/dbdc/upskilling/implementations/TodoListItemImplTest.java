@@ -3,6 +3,8 @@ package com.luxoft.dbdc.upskilling.implementations;
 import com.luxoft.dbcd.upskilling.implementations.TodoListItemImpl;
 import org.junit.jupiter.api.*;
 
+import java.time.Duration;
+
 class TodoListItemImplTest {
 
     protected TodoListItemImpl todoItem;
@@ -59,6 +61,8 @@ class TodoListItemImplTest {
         String new_title = "New title for test item";
         TodoListItemImpl newItem = item.setTitle(new_title);
         Assertions.assertEquals(new_title, newItem.getTitle());
+        Assertions.assertAll( () -> Assertions.assertEquals(new_title, newItem.getTitle()),
+                () -> Assertions.assertTrue(new_title.equalsIgnoreCase(newItem.getTitle())));
     }
 
     @Test
@@ -67,6 +71,12 @@ class TodoListItemImplTest {
                 () -> item.setTitle(""));
     }
 
+    @Test
+    public void item_duration() {
+        Assertions.assertTimeout(Duration.ofMillis(10), () -> (item.setTitle("Abra kadabra")));
+    }
+
+       
     @AfterEach
     public void tearDown() {
 

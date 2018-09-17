@@ -5,12 +5,12 @@ import org.junit.jupiter.api.*;
 
 import java.time.Duration;
 
+@Tag("todotest")
 class TodoListItemImplTest {
 
     protected TodoListItemImpl todoItem;
     protected String title;
     TodoListItemImpl item;
-
 
     @BeforeAll
     public static void setUpGlobal() {
@@ -76,7 +76,7 @@ class TodoListItemImplTest {
         Assertions.assertTimeout(Duration.ofMillis(10), () -> (item.setTitle("Abra kadabra")));
     }
 
-       
+
     @AfterEach
     public void tearDown() {
 

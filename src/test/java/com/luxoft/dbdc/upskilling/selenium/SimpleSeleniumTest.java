@@ -11,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class SimpleSeleniumTest {
 
-
     private static WebDriver webDriver;
     @BeforeAll
     public static void setUp(){
@@ -19,7 +18,6 @@ public class SimpleSeleniumTest {
         ChromeOptions opt = new ChromeOptions();
        //opt.setHeadless(true);
         webDriver = new ChromeDriver();
-
     }
 
     @Test
@@ -27,8 +25,11 @@ public class SimpleSeleniumTest {
         String address = "http://www.google.com";
         String queryString = "selenium";
         webDriver.get(address);
-        WebElement searchField = webDriver.findElement(By.name("q"));
-        searchField.sendKeys("selenium" + Keys.ENTER);
+      //  WebElement searchField = webDriver.findElement(By.name("q"));
+        WebElement searchField = webDriver.findElement(By.xpath("//input[@name='q']"));
+        searchField.clear();
+        searchField.sendKeys(queryString); //"selenium" + Keys.ENTER
+        searchField.submit();
         Thread.sleep(3000);
         //Assertions.assertTrue(()->webDriver.getTitle().equalsIgnoreCase("Google"));
         Assertions.assertTrue(webDriver.getTitle().contains(queryString));

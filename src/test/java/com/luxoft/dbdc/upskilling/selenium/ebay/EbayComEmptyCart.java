@@ -10,10 +10,6 @@ import static org.hamcrest.Matchers.is;
 
 public class EbayComEmptyCart extends EbayBase {
 
-
-    private final String PRIVACY_POLICY_FORM = ".alert";
-    private final String PRIVACY_POLICY_ACCEPT_BUTTON = "button.btn-outline";//"//button[contains(@class,'btn-outline')]";
-    private final String SHOPPING_CART_ICON = ".etsy-icon-cart";
     private final String CART = "//*[@id='gh-cart-i']";
 
     private final String EMPTY_CART = "div.empty-cart";

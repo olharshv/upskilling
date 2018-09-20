@@ -8,14 +8,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class EtsyComEmptyCard extends EtsyBase {
+public class EtsyComEmptyCart extends EtsyBase {
 
     private final String PRIVACY_POLICY_FORM = ".alert";
-    private final String PRIVACY_POLICY_ACCEPT_BUTTON = "button.btn-outline";//"//button[contains(@class,'btn-outline')]";
+    private final String PRIVACY_POLICY_ACCEPT_BUTTON = "button.btn-outline";
+    //"//button[contains(@class,'btn-outline')]";
     private final String SHOPPING_CART_ICON = ".etsy-icon-cart";
     private final String PRIVACY_POLICY_SUCCESS_MODAL = ".alert-success";
     private final String EMPTY_CART_HEADER = "div.empty-header";
-
 
     @Test
     public void shouldHaveEmptyShoppingCartOnFirstVisit() throws InterruptedException {
@@ -24,7 +24,7 @@ public class EtsyComEmptyCard extends EtsyBase {
         webDriver.get(mainPage);
         //accept privacy rule
 
-        //WebElement acceptPrivacyRulesButton = webDriver.findElement(By.cssSelector(PRIVACY_POLICY_FORM))
+       // WebElement acceptPrivacyRulesButton = webDriver.findElement(By.cssSelector(PRIVACY_POLICY_FORM))
         //        .findElement(By.xpath(PRIVACY_POLICY_ACCEPT_BUTTON));
         //acceptPrivacyRulesButton.click();
         //go to cart page

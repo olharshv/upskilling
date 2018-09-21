@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 public class EbaySearch extends EbayBase {
     private final String SEARCH_FIELD = "//*[@id=\"gh-ac\"]";
     private final String SEARCH_BUTTON = "//*[@id=\"gh-btn\"]";
-    private final String TAB = "//*[@id=\"cbelm\"]/div[1]/div[2]/span";
+    private final String TAB = "//*[@id=\"cbelm\"]/div[1]/div[2]/span"; //"//span[contains(text(),'Auction')]"
 
     @Test
     public void findProducts() throws InterruptedException {

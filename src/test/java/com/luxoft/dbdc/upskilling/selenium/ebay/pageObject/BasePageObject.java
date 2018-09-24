@@ -18,8 +18,8 @@ public class BasePageObject {
 
     protected WebElement findElementWithWait(By locator){
         return new WebDriverWait(webDriver, MAX_WAIT_TIME).until(
-                ExpectedConditions.visibilityOfElementLocated(locator)
-              //  ExpectedConditions.presenceOfAllElementsLocatedBy(locator)
+              //  ExpectedConditions.visibilityOfElementLocated(locator)
+               ExpectedConditions.presenceOfElementLocated(locator)
 
         );
     }

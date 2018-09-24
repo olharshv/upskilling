@@ -4,9 +4,12 @@ import org.junit.jupiter.api.AfterAll;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,6 +63,41 @@ private static String  SHOP_BY_PRICE_ITEMS = "div.search-guidance__text-item-tit
         return webDriver.findElements(By.cssSelector(SHOP_BY_PRICE_ITEMS))
                 .stream()
                 .map(webElement -> webElement.getText())
+               // .peek(System.out: println)
                 .collect(Collectors.toList());
+    }
+
+    public EbayComPageObject selectItemsInAdditionalCategoryForCategory(String subCategory,
+                                                                        String category) {
+        Actions builder = new Actions (webDriver);
+
+        //String xpathSelCat = String.format("li[@class='hl-cat-nav__js-tab']/a[contains(.,'%s')]", category);
+        ////a[contains(text(), '%s')]
+        //String xpathSelSubCat = String.format("//a[contains(text(), '%s')]", subCategory);
+
+        String xpathSelCat = String
+                .format("//*[@id='navigationFragment']/div/table/tbody/tr/td[5]/a[contains(., '%s')]", category);
+        String xpathSelSubCat = String
+                .format("//*[@id='navigationFragment']/div/table/tbody/tr/td[5]/div[2]/div[1]/ul[2]/li[2]/a[contains(., '%s')]", subCategory);
+
+       /* WebElement categoryItem = webDriver.findElement(By.cssSelector("hl-cat-nav__container"));
+        WebElement categoryItem = findElementWithWait(By.xpath(xpathSelCat));
+        Action ourComplexAction1 = builder.moveToElement(categoryItem).click().build();
+        ourComplexAction1.perform();*/
+
+       builder.moveToElement(findElementWithWait(By.xpath(xpathSelCat)))
+               .pause(Duration.ofSeconds(2))
+                .moveToElement(findElementWithWait(By.xpath(xpathSelSubCat)))
+                .pause(Duration.ofSeconds(2))
+                .click()
+                .build()
+                .perform();
+
+//       builder.moveToElement(findElementWithWait(By.xpath(xpathSelSubCat)))
+//               .pause(Duration.ofSeconds(2))
+//               .click()
+//               .build()
+//               .perform();
+        return this;
     }
 }

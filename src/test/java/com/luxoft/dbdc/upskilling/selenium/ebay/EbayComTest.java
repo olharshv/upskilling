@@ -1,10 +1,7 @@
 package com.luxoft.dbdc.upskilling.selenium.ebay;
 
 import com.luxoft.dbdc.upskilling.selenium.ebay.pageObject.EbayComPageObject;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -37,12 +34,19 @@ public class EbayComTest {
                 .selectAuctionItems();
         assertThat(ebayPage.getAuctionBestPrices(),
                 containsInAnyOrder("Under $8.00", "$8.00 - $18.00", "Over $18.00"));
+        }
 
-
+    @Test
+    public void shouldShowBestPriceWhenSelectAuctionAfterSearchAdditionalCategory() throws InterruptedException {
+        ebayPage.goToMainPage()
+                .selectItemsInAdditionalCategoryForCategory("iPhone", "Electronics");
+        Thread.sleep(3000);
+              /*  .selectAuctionItems();
+        assertThat(ebayPage.getAuctionBestPrices(),
+                containsInAnyOrder("Under $8.00", "$8.00 - $18.00", "Over $18.00"));*/
     }
-
-    @AfterAll
-    public static void tearDown(){
+    @AfterEach
+    public void tearDown(){
         webDriver.quit();
     }
 }

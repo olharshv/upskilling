@@ -70,22 +70,11 @@ private static String  SHOP_BY_PRICE_ITEMS = "div.search-guidance__text-item-tit
     public EbayComPageObject selectItemsInAdditionalCategoryForCategory(String subCategory,
                                                                         String category) {
         Actions builder = new Actions (webDriver);
-
-        //String xpathSelCat = String.format("li[@class='hl-cat-nav__js-tab']/a[contains(.,'%s')]", category);
-        ////a[contains(text(), '%s')]
-        //String xpathSelSubCat = String.format("//a[contains(text(), '%s')]", subCategory);
-
         String xpathSelCat = String
                 .format("//*[@id='navigationFragment']/div/table/tbody/tr/td[5]/a[contains(., '%s')]", category);
         String xpathSelSubCat = String
                 .format("//*[@id='navigationFragment']/div/table/tbody/tr/td[5]/div[2]/div[1]/ul[2]/li[2]/a[contains(., '%s')]", subCategory);
-
-       /* WebElement categoryItem = webDriver.findElement(By.cssSelector("hl-cat-nav__container"));
-        WebElement categoryItem = findElementWithWait(By.xpath(xpathSelCat));
-        Action ourComplexAction1 = builder.moveToElement(categoryItem).click().build();
-        ourComplexAction1.perform();*/
-
-       builder.moveToElement(findElementWithWait(By.xpath(xpathSelCat)))
+        builder.moveToElement(findElementWithWait(By.xpath(xpathSelCat)))
                .pause(Duration.ofSeconds(2))
                 .moveToElement(findElementWithWait(By.xpath(xpathSelSubCat)))
                 .pause(Duration.ofSeconds(2))
@@ -93,11 +82,6 @@ private static String  SHOP_BY_PRICE_ITEMS = "div.search-guidance__text-item-tit
                 .build()
                 .perform();
 
-//       builder.moveToElement(findElementWithWait(By.xpath(xpathSelSubCat)))
-//               .pause(Duration.ofSeconds(2))
-//               .click()
-//               .build()
-//               .perform();
         return this;
     }
 }
